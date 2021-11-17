@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [hook, setHook] = useState(123); // 123 
+
+  
+  // jsx 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: "red"}}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          {hook}
         </p>
-        <a
+        <p
           className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={() => setHook(456)}
         >
           Learn React
-        </a>
+        </p>
       </header>
     </div>
   );
