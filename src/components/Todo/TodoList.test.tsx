@@ -45,10 +45,10 @@ describe('<TodoList />', () => {
   it('calls onToggle and onRemove', () => {
     const { getByText, getAllByText, onToggle, onRemove } = setup();
 
-    fireEvent.click(getByText(sampleTodos[0].text));
-    expect(onToggle).toBeCalledWith(sampleTodos[0].id);
+    fireEvent.click(getByText(sampleTodos[0].text)); //sampleTodos[0].text 텍스트를 가진 엘리먼트가 있는지 확인
+    expect(onToggle).toBeCalledWith(sampleTodos[0].id); // 해당 파라미터를 가진 함수가 한번이라도 호출된 적이 있으면 통과
 
-    fireEvent.click(getAllByText('삭제')[0]);
+    fireEvent.click(getAllByText('삭제')[0]); // 첫번째 삭제 버튼을 클릭
     expect(onRemove).toBeCalledWith(sampleTodos[0].id);
   });
 });
