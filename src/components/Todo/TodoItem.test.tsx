@@ -9,7 +9,7 @@ describe('<TodoItem />', () => {
   };
 
   const setup = (props) => {
-    const initialProps = { todo: sampleTodo }
+    const initialProps = { todo: sampleTodo };
     render(<TodoItem {...initialProps} {...props} />);
     const { getByText } = screen;
     const todo =  props.todo || initialProps.todo;
@@ -52,4 +52,4 @@ describe('<TodoItem />', () => {
     fireEvent.click(button);
     expect(onRemove).toBeCalledWith(sampleTodo.id);
   });
-})
+});

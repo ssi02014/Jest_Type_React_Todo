@@ -6,8 +6,8 @@ interface Props {
     text: string;
     done: boolean
   };
-  onToggle: (id:number) => void;
-  onRemove: (id:number) => void;
+  onToggle?: (id:number) => void;
+  onRemove?: (id:number) => void;
 }
 
 const TodoItem = ({ todo, onToggle, onRemove }: Props) => {
