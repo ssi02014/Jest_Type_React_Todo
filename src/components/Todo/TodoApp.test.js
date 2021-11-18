@@ -37,4 +37,31 @@ describe("<TodoApp />", () => {
     fireEvent.click(getByText("등록"));
     getByText("새 항목 추가하기");
   });
+
+  it("toggles todo", () => {
+    const { getByText } = setup();
+    const todoText = getByText("TDD 배우기");
+    expect(todoText).toHaveStyle("text-decoration: line-through;");
+
+    fireEvent.click(todoText);
+    expect(todoText).not.toHaveStyle("text-decoration: line-through;");
+
+    fireEvent.click(todoText);
+    expect(todoText).toHaveStyle("text-decoration: line-through;");
+  });
+
+  it("removes todo", () => {
+    const { getByText } = setup();
+    const todoText = getByText("TDD 배우기");
+    const removeButton = todoText.nextSibling;
+
+    fireEvent.click(removeButton);
+    expect(todoText).not.toBeInTheDocument(); // 페이지에서 사라졌음을 의미
+
+    /*
+      위에 toBeInTheDocument를 사용하지 않으면 다음과 같이 구현할 수 있다.
+      const removedText = queryByText('TDD 배우기');
+      expect(removedText).toBeNull();
+    */
+  });
 });
